@@ -1,0 +1,9 @@
+#average mosaic paramters
+block: 20
+mosaic_area: 100
+#region:center,random
+region: 'center'
+image_path: './original_images'
+save_path: './mosaiced_images'
+#strategy: averaging, one-color-fill-max, one-color-fill-random, nearest_neibour_sampling
+strategy: 'nearest_neibour_sampling'
