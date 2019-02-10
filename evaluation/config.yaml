@@ -8,4 +8,4 @@ region_record: 'region.txt'
 imageA: './original_image'
 imageB: './mosaiced_image'
 # method: PSNR, part_PSNR, SSIM, part_SSIM, Perceptual_loss
-method: 'PSNR'
+method: 'part_PSNR'

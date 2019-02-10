@@ -62,7 +62,7 @@ if config['method'] == 'part_PSNR':
             original_image,processed_image, area = get_random_filename_area(line)
             original_image = original_image_path + '/' + original_image
             processed_image = processed_image_path + '/' + processed_image
-            record = processed_image + ' part_PSNR '
+            record = original_image + ' part_PSNR '
             original_image = np.array(Image.open(original_image).convert('RGB'))
             processed_image = np.array(Image.open(processed_image).convert('RGB'))
             original_image = original_image[area['height_up']:area['height_down'],area['width_left']:area['width_right']]
