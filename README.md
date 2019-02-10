@@ -26,7 +26,11 @@ method: 'PSNR'
 
 If the **region** is random:
  - make sure there is region.txt(created by Mosaicing)
- - python evaluate.py
+ - ``` python evaluate.py  ```
+ - It will create a txt file, which records the picture name and its evaluation result
+ - then ``` python total_calculate.py --filename filename.txt``` the filename is what we have just created in step 2
+ - It will print the average of the evaluation result
+
 If the **region** is center:
  - python evaluate.py
 
@@ -50,4 +54,4 @@ strategy: 'nearest_neibour_sampling'
 ```sh
 python mosaic.py
 ```
-If you choose **region: random**, it will create a **region.txt** file, which records the region of the mosaic area. And**region.txt** will be used for evulation
+If you choose **region: random**, it will create a **region.txt** file, which records the region of the mosaic area. And the **region.txt** will be used for evulation
