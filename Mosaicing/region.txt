@@ -1,0 +1,4 @@
+./mosaiced_images/mosaiced_COCO_val2014_000000000074.jpg width_left 358 height_up 142 mosaic_area 100
+./mosaiced_images/mosaiced_COCO_val2014_000000000042.jpg width_left 422 height_up 2 mosaic_area 100
+./mosaiced_images/mosaiced_COCO_val2014_000000000133.jpg width_left 124 height_up 150 mosaic_area 100
+./mosaiced_images/mosaiced_COCO_val2014_000000000073.jpg width_left 71 height_up 349 mosaic_area 100

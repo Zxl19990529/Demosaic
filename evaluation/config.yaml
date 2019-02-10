@@ -1,0 +1,11 @@
+#average mosaic paramters
+block: 20
+mosaic_area: 100
+#region:center,random
+region: 'random'
+region_record: 'region.txt'
+# image A and B,
+imageA: './original_image'
+imageB: './mosaiced_image'
+# method: PSNR, part_PSNR, SSIM, part_SSIM, Perceptual_loss
+method: 'PSNR'

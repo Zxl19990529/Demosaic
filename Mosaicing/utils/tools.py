@@ -56,9 +56,9 @@ def save_imge(img,save_path_root,filename,region,width_left,height_up,mosaic_are
         img.save(save_path)        
         if region == 'random' :
                 if width_right == 0:
-                        record = save_path+' '+'Image Size ERROR'+'\n'
+                        record = save_path+' '+'Image Size ERROR '+'\n'
                 else :
-                        record = save_path+' '+'width_left '+str(width_left)+' height_up '+str(height_up)+' mosaic_area '+str(mosaic_area)+'\n'
+                        record = save_path+' '+'width_left '+str(width_left)+' height_up '+str(height_up)+' mosaic_area '+str(mosaic_area)+' \n'
                 f=open('region.txt','a')
                 f.writelines(record)
                 f.close()

@@ -1,49 +1,53 @@
-## 总规划
+# Before using
+Make sure you have install anaconda, and create the environment with the following arg:
+```sh
+conda env create -f environment.yaml
+```
+## Evaluation
 
+This folder contains python files for evaluating PSNR, part_PSNR, SSIM, part_SSIM of mosaiced_images and orginal_images.  
+Here is the config.yaml :
 
-- **2018.11.28---2018.12.12**
-  - 完成综述，跟踪最新进展整理出来当前去马赛克的方法，实现的效果，做到什么程度
-  - 之前比赛用的是2018CVPR的[Generative Image Inpainting with Contextual Attention](https://arxiv.org/abs/1801.07892)
-- **2018.12.12---2018.12.26**
-  - 跑别人的方法，对比找出存在的问题
-  - 明确要解决的问题
-- **2018.12.26---2019.1.2**
-  - 细化问题，开始设计和改进模型
-- **2019.1.2---2019.1.16**
-  - 考试周，复习……-_-||
-- **2019.1.16---2019.2.22**
-  - 改善模型
-  - 完成初稿
-- **2019.2.22---2019.3.21**
-  - 补充实验，修改和完善论文。
+```yml
+#average mosaic paramters
+block: 20
+mosaic_area: 100
+#region:center,random
+region: 'random'
+region_record: 'region.txt'
+# image A and B,
+imageA: './original_image'
+imageB: './mosaiced_image'
+# method: PSNR, part_PSNR, SSIM, part_SSIM, Perceptual_loss
+method: 'PSNR'
+```
 
+### Usage
 
-## 时间表
-|         |       时间        |时长  |周数|
-|---------|------------------|-----|----|
-|截稿日期 ：| 2019 年 3 月 22 日|113天|16周|
-|初稿日期： | 2019 年 2 月 22 日|84天 |12周|
+If the **region** is random:
+ - make sure there is region.txt(created by Mosaicing)
+ - python evaluate.py
+If the **region** is center:
+ - python evaluate.py
 
+ ## Mosaicing
 
-|　日期　     |　周数 |              目标             |
-|------------|------|-------------------------------|
-|11月28~12月 5|第 0周| 综述                           |
-|12月 5~12月12|第 1周| 完成综述，整理出来别人都做到什么程度|
-|12月12~12月19|第 2周| 开始跑别人的方法，找出存在哪些问题|
-|12月19~12月26|第 3周| 
-|12月26~ 1月 2|第 4周| 明确要解决的问题，开始设计和改进模型
-| 1月 2~ 1月 9|第 5周|考试周
-| 1月 9~ 1月16|第 6周|考试周
-| 1月16~ 1月23|第 7周|
-| 1月23~ 1月30|第 8周|
-| 1月30~ 2月 6|第 9周|
-| 2月 6~ 2月13|第10周|
-| 2月 13~2月20|第11周|
-| 2月 20~22月27|第12周|完成初稿
+This folder contains python files for mosaicing, here I haver implemented four methods:*averaging, one-color-fill-max, one-color-fill-random, nearest_neibour_sampling*  
+Here is the config.yaml: 
+```yml
+#average mosaic paramters
+block: 20
+mosaic_area: 100
+#region:center,random
+region: 'random'
+image_path: './original_images'
+save_path: './mosaiced_images'
+#strategy: averaging, one-color-fill-max, one-color-fill-random, nearest_neibour_sampling
+strategy: 'nearest_neibour_sampling'
+```
 
-## 进度
-
-- 11月28日（第0周）：
-    - 目前已经完成以Demosaicing 和 Image Inpainting 为关键字的论文检索，检索范围 2016~2018的 **ICCV**、**CVPR**和**ECCV** ，每篇文章对应的Github地址也都整理出来了
-    - 整理文献在[石墨文档](https://shimo.im/docs/VLSdIXfLf9QU0M0P/)
-    - 目前已知存在的问题：有些马赛克复原后边缘有较明显错位现象；原本图案如果是螺旋形状的复原不出螺旋的形状
+### Usage
+```sh
+python mosaic.py
+```
+If you choose **region: random**, it will create a **region.txt** file, which records the region of the mosaic area. And**region.txt** will be used for evulation
