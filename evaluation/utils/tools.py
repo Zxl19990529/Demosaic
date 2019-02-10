@@ -3,6 +3,7 @@ import numpy as np
 import os 
 import random
 import re
+import skimage
 def get_config(config):
     with open(config,'r') as stream:
         return yaml.load(stream) 
@@ -28,11 +29,23 @@ def get_random_filename_area(line):
         original_image = processed_image[9:]# 把mosaiced_ 这段字符串去掉
         return original_image,processed_image, area
 
+# def PSNR(original_image,processed_image):
+#         diff = original_image-processed_image
+#         diff_r = diff[:,:,0]
+#         diff_g = diff[:,:,1]
+#         diff_b = diff[:,:,2]
+#         MSE_r = np.mean(np.square(diff_r))
+#         MSE_g = np.mean(np.square(diff_g))
+#         MSE_b = np.mean(np.square(diff_b))
+#         MSE = (MSE_r+MSE_g+MSE_b)/3
+#         if MSE == 0:
+#                 return 0
+#         result = 10*np.log10(255*255/MSE)
+#         return result
+
 def PSNR(original_image,processed_image):
-        width,height=original_image.shape[1],original_image.shape[0]
-        diff = original_image-processed_image
-        MSE = (np.sum(diff*diff))/(width*height)
-        if MSE == 0:
-                return 0
-        result = 10*np.log10(255*255/MSE)
-        return result
+        return skimage.measure.compare_psnr(original_image,processed_image,data_range=255)
+
+def SSIM(original_image,processed_image):
+        return skimage.measure.compare_ssim(original_image,processed_image,data_range=255,multichannel=True)
+        
