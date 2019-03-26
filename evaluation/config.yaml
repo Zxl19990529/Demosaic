@@ -7,5 +7,5 @@ region_record: 'region.txt'
 # image A and B,
 imageA: './original_image'
 imageB: './mosaiced_image'
-# method: PSNR, part_PSNR, SSIM, part_SSIM, Perceptual_loss
-method: 'part_PSNR'
+# method: PSNR, part_PSNR, SSIM, part_SSIM, LPIPS
+method: 'LPIPS'

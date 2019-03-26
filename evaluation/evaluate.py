@@ -138,3 +138,23 @@ elif config['method'] == 'part_SSIM':
             f.writelines(record)
             f.close()
             print(record)
+elif config['method'] == 'LPIPS':
+    from models import dist_model as dm
+    from utils import util
+    model = dm.DistModel()
+    model.initialize(model='net-lin',net='alex',use_gpu=True)
+
+    for filename in os.listdir(original_image_path):# 遍历两个文件
+        original_image = original_image_path + '/' + filename
+        processed_image = processed_image_path + '/' + 'mosaiced_' + filename
+        record = original_image + ' LPIPS '
+        original_image = util.im2tensor(util.load_image(original_image)) # RGB image from [-1,1]
+        processed_image = util.im2tensor(util.load_image(processed_image))
+
+        perceptual_loss = model.forward(original_image,processed_image)
+
+        record += str(perceptual_loss[0])+' \n'
+        f = open('LPIPS.txt','a')
+        f.writelines(record)
+        print(record)
+        

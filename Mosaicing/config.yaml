@@ -1,9 +1,11 @@
 #average mosaic paramters
 block: 20
+block_rate_byshort: 0.1 
 mosaic_area: 100
+mosaic_area_rate: 0.25
 #region:center,random
 region: 'random'
-image_path: './original_images'
-save_path: './mosaiced_images'
+image_path: './Dataset'
+save_path: './sampling'
 #strategy: averaging, one-color-fill-max, one-color-fill-random, nearest_neibour_sampling
 strategy: 'nearest_neibour_sampling'
